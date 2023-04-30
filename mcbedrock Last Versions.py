@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import tqdm
 
-url = "https://mcpedl.org/post-sitemap.xml"
+url = "https://mcpedl.org/post-sitemap2.xml"
 res = requests.get(url)
 soup = BeautifulSoup(res.content, 'xml')
 
@@ -15,7 +15,7 @@ for url in soup.find_all('url'):
         if "-apk" in version:
             version = version.split("-apk")[0]
         versions.append(version)
-
+    
 sorted_versions = sorted(versions, key=lambda x: [int(y) for y in x.split('-') if y.isdigit()])
 
 downloadable_versions = []
